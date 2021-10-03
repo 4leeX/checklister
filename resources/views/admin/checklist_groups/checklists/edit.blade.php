@@ -52,34 +52,10 @@
                     <div class="card">
                         <div class="card-header"> {{ __('List of Tasks') }}</div>
                             <div class="card-body">
-                                <table class="table table-responsive-sm table-striped">
-                                
-                                    <tbody>
-                                        @foreach ($checklist->tasks as $task)
-                                        <tr>
-                                            <td>{{ $task->name }}</td>
-                                            <td>
-                                                <a class="btn btn-sm btn-primary"
-                                                    href="{{ route('admin.checklists.tasks.edit', [$checklist, $task]) }}">
-                                                        {{ __('Edit') }}
-                                                </a>
-                                                <form style="display: inline-block" 
-                                                    action="{{ route('admin.checklists.tasks.destroy', [$checklist, $task]) }}" method="post">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button class="btn btn-sm btn-info" type="submit"
-                                                        onclick="return confirm('{{ __('Are you sure?') }}') "
-                                                    > {{ __('Delete') }}</button>
-                                
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                
-                                    </tbody>
-                                </table>
+                                @livewire('tasks-table', ['checklist' => $checklist])
                             </div>
                         </div>
+
 
                         @if ($errors->storetask->any())
                             <div class="alert alert-danger">
