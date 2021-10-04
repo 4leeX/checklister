@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CheckListController;
 use App\Http\Controllers\Admin\CheckListGroupController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\TaskController;
+use App\Http\Controllers\PageController as ControllersPageController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -24,10 +25,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('welcome', [ControllersPageController::class, 'welcome'])->name('welcome');
+    Route::get('consultation', [ControllersPageController::class, 'consultation'])->name('consultation');
 
     Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'is_admin'], function () {
         Route::resource('pages', PageController::class)
