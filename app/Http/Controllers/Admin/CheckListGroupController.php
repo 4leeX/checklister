@@ -29,7 +29,7 @@ class CheckListGroupController extends Controller
     {
         ChecklistGroup::create($request->validated());
 
-        return redirect()->route('home');
+        return redirect()->route('welcome');
     }
 
     /**
@@ -54,7 +54,7 @@ class CheckListGroupController extends Controller
     {
         $checklistGroup->update($request->validated());
 
-        return redirect()->route('home');
+        return redirect()->route('welcome');
     }
 
     /**
@@ -67,6 +67,6 @@ class CheckListGroupController extends Controller
     {
         $checklistGroup->delete();
 
-        return redirect()->route('home');
+        return redirect()->route('welcome');
     }
 }
