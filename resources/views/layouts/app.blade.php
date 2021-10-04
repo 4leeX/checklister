@@ -18,11 +18,11 @@
 
         <div class="c-wrapper">
             <header class="c-header c-header-light c-header-fixed">
-            <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar" data-class="c-sidebar-show">
-            <svg class="c-icon c-icon-lg">
-                <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-menu"></use>
-            </svg>
-            </button>
+                <button class="c-header-toggler c-class-toggler mfs-3 d-md-down-none" type="button" data-target="#sidebar" data-class="c-sidebar-lg-show" responsive="true">
+                    <svg class="c-icon c-icon-lg">
+                    <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-menu') }}"></use>
+                    </svg>
+                </button>
             <ul class="c-header-nav mfs-auto">
             </ul>
             <ul class="c-header-nav">
@@ -60,7 +60,7 @@
             <li class="c-header-nav-item dropdown d-md-down-none mx-2">
                 <a class="c-header-nav-link" href="{{ route('welcome') }}" role="button" aria-haspopup="true" aria-expanded="false">
                 <svg class="c-icon">
-                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-settings"></use>
+                    <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-settings') }}"></use>
                 </svg>
             </a>
             <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg pt-0">
@@ -109,7 +109,7 @@
             <li class="c-header-nav-item dropdown"><a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
             <div class="c-avatar">
                 <svg class="c-icon c-icon-lg">
-                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-user"></use>
+                    <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-user') }}"></use>
                 </svg>
             </div>
             </a>
