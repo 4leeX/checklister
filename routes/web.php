@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CheckListController;
 use App\Http\Controllers\Admin\CheckListGroupController;
+use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\TaskController;
 use App\Http\Controllers\Admin\UserController;
@@ -38,5 +39,6 @@ Route::group(['middleware' => ['auth', 'save_last_action_timestamp']], function 
         Route::resource('checklist_groups.checklists', CheckListController::class);
         Route::resource('checklists.tasks', TaskController::class);
         Route::get('users', [UserController::class, 'index'])->name('users.index');
+        Route::post('images', [ImageController::class, 'store'])->name('images.store');
     });
 });

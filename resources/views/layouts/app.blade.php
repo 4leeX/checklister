@@ -67,7 +67,7 @@
             <div class="dropdown-header bg-light"><strong>You have 4 messages</strong></div><a class="dropdown-item" href="#">
             <div class="message">
             <div class="py-3 mfe-3 float-left">
-            <div class="c-avatar"><img class="c-avatar-img" src="assets/img/avatars/7.jpg" alt="user@email.com"><span class="c-avatar-status bg-success"></span></div>
+            {{-- <div class="c-avatar"><img class="c-avatar-img" src="assets/img/avatars/7.jpg" alt="user@email.com"><span class="c-avatar-status bg-success"></span></div> --}}
             </div>
             <div><small class="text-muted">John Doe</small><small class="text-muted float-right mt-1">Just now</small></div>
             <div class="text-truncate font-weight-bold"><span class="text-danger">!</span> Important message</div>
@@ -77,7 +77,7 @@
             <div class="message">
             <div class="py-3 mfe-3 float-left">
             <div class="c-avatar">
-                <img class="c-avatar-img" src="assets/img/avatars/6.jpg" alt="user@email.com">
+                {{-- <img class="c-avatar-img" src="assets/img/avatars/6.jpg" alt="user@email.com"> --}}
                 <span class="c-avatar-status bg-warning"></span>
             </div>
             </div>
@@ -88,7 +88,7 @@
             </a><a class="dropdown-item" href="#">
             <div class="message">
             <div class="py-3 mfe-3 float-left">
-            <div class="c-avatar"><img class="c-avatar-img" src="assets/img/avatars/5.jpg" alt="user@email.com"><span class="c-avatar-status bg-danger"></span></div>
+            {{-- <div class="c-avatar"><img class="c-avatar-img" src="assets/img/avatars/5.jpg" alt="user@email.com"><span class="c-avatar-status bg-danger"></span></div> --}}
             </div>
             <div><small class="text-muted">John Doe</small><small class="text-muted float-right mt-1">1:52 PM</small></div>
             <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
@@ -97,7 +97,7 @@
             </a><a class="dropdown-item" href="#">
             <div class="message">
             <div class="py-3 mfe-3 float-left">
-            <div class="c-avatar"><img class="c-avatar-img" src="assets/img/avatars/4.jpg" alt="user@email.com"><span class="c-avatar-status bg-info"></span></div>
+            {{-- <div class="c-avatar"><img class="c-avatar-img" src="assets/img/avatars/4.jpg" alt="user@email.com"><span class="c-avatar-status bg-info"></span></div> --}}
             </div>
             <div><small class="text-muted">John Doe</small><small class="text-muted float-right mt-1">4:03 PM</small></div>
             <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
@@ -118,7 +118,7 @@
                 onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
                     <svg class="c-icon mfe-2">
-                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-account-logout"></use>
+                        <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-account-logout') }}"></use>
                     </svg> Logout</a>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -152,7 +152,7 @@
  <!-- Optional JavaScript -->
  <!-- Popper.js first, then CoreUI JS -->
  {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.0/perfect-scrollbar.min.js" integrity="sha512-yUNtg0k40IvRQNR20bJ4oH6QeQ/mgs9Lsa6V+3qxTj58u2r+JiAYOhOW0o+ijuMmqCtCEg7LZRA+T4t84/ayVA==" crossorigin="anonymous"></script> --}}
- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> <script src="https://unpkg.com/@popperjs/core@2"></script>
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.0/perfect-scrollbar.min.js" integrity="sha512-yUNtg0k40IvRQNR20bJ4oH6QeQ/mgs9Lsa6V+3qxTj58u2r+JiAYOhOW0o+ijuMmqCtCEg7LZRA+T4t84/ayVA==" crossorigin="anonymous"></script>
  <script src="https://unpkg.com/@coreui/coreui@3.4.0/dist/js/coreui.min.js"></script>
  <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
