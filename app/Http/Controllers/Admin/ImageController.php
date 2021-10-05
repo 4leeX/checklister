@@ -3,14 +3,19 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Task;
 
 class ImageController extends Controller
 {
-    public function store(Request $request)
+    public function store()
     {
+        $task = new Task();
+        $task->id = 0;
+        $task->exists = true;
+        $image = $task->addMediaFromRequest('upload')->toMediaCollection('images');
+
         return response()->json([
-            'url' => 'https://images7.alphacoders.com/109/1098539.png'
+            'url' => $image->getUrl('thumb')
         ]);
     }
 }
