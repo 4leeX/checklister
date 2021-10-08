@@ -2,10 +2,11 @@
     <div class="col-md-8">
         <div class="card">
             <div class="card-header">
-                {{ $checklist->name }}
+                {{ $list_name }}
                 <div class="card-body">
+                    @if($list_tasks->count())
                     <table class="table">
-                        @foreach ($checklist->tasks->where('user_id', NULL) as $task)
+                        @foreach ($list_tasks as $task)
                             <tr>
                                 <td width="5%">
                                     <input type="checkbox" wire:click="complete_task({{ $task->id }})"
@@ -16,10 +17,21 @@
                                     <a wire:click.prevent="toggle_task({{$task->id}})" href="#">
                                         {{ $task->name }}
                                     </a>
+
+                                @if(!is_null($list_type))
+                                <div style="font-style: italic; font-size: 11px">
+                                    {{ $task->checklist->name }}
+                                    @if (optional($user_tasks->where('task_id', $task->id)->first())->due_date)
+                                        | {{ __('Due') }} {{ $user_tasks->where('task_id', $task->id)->first()->due_date->format('M d, Y') }}
+                                    @endif
+                                </div>
+                                @endif
+
+                                </div>
                                 </td>
                                 <td width="5%">
-                                    @if (optional($checklist->user_tasks()->where('task_id', $task->id)->first())->is_important)                            
-                                        <a wire:click.prevent="mark_as_important({{ $task->id }})" href="#">&star;</a>
+                                    @if (optional($user_tasks->where('task_id', $task->id)->first())->is_important)                            
+                                        <a wire:click.prevent="mark_as_important({{ $task->id }})" href="#">&starf;</a>
                                     @else
                                         <a wire:click.prevent="mark_as_important({{ $task->id }})" href="#">&star;</a>
                                     @endif
@@ -34,6 +46,9 @@
                             @endif
                         @endforeach
                     </table>
+                    @else
+                        {{ __('No tasks found') }}
+                    @endif
                 </div>
             </div>
         </div>
@@ -45,7 +60,7 @@
                 <div class="card-body">
                     <div class="float-right">
                         @if ($current_task->is_important)                            
-                            <a wire:click.prevent="mark_as_important({{ $current_task->id }})" href="#">&star;</a>
+                            <a wire:click.prevent="mark_as_important({{ $current_task->id }})" href="#">&starf;</a>
                         @else
                             <a wire:click.prevent="mark_as_important({{ $current_task->id }})" href="#">&star;</a>
                         @endif
@@ -111,7 +126,24 @@
                 <div class="card-body">
                     &#9745;
                     &nbsp;
-                    <a href="#">{{ __('Note') }}</a>
+                    @if($current_task->note)
+                        <a wire:click.prevent="toggle_note" href="#">{{ __('Note') }}</a>
+                        @if(!$note_opened)
+                        <p>
+                            {{ $current_task->note }}
+                            <br />
+                            <a wire:click.prevent="toggle_note" href="#">{{ __('Edit') }}</a>
+                        </p>
+                        @endif
+                    @else
+                        <a wire:click.prevent="toggle_note" href="#">{{ __('Note') }}</a>
+                    @endif
+                    @if($note_opened)
+                        <div class="mt-4">
+                            <textarea wire:model="note" class="form-control" rows="5"></textarea>
+                            <button wire:click="save_note" class="btn btn-sm btn-primary mt-2">{{ __('Save Note') }}</button>
+                        </div>
+                    @endif
                 </div>
             </div>
         @endif
