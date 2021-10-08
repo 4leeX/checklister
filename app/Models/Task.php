@@ -24,11 +24,13 @@ class Task extends Model implements HasMedia
         'added_to_my_day_at',
         'is_important',
         'due_date',
-        'note'
+        'note',
+        'reminder_at'
     ];
 
     protected $dates = [
-        'due_date'
+        'due_date',
+        'reminder_at'
     ];
 
     public function registerMediaConversions(Media $media = null): void
